@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игры - Магазин</title>
+</head>
+<body>
+    <h1>Игры</h1>
+    <ul>
+        {% for game in games_list %}
+            <li>
+                {{ game.title }}
+                <button>{{ game.button }}</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}"><button>На главную страницу</button></a>
+</body>
+</html>
