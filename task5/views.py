@@ -4,13 +4,12 @@ from .forms import UserRegister
 # Create your views here.
 users = ['user1', 'user2', 'user3']
 
-
 def sign_up_by_django(request):
     info = {}
+    form = UserRegister()
 
     if request.method == 'POST':
         form = UserRegister(request.POST)
-
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -24,10 +23,7 @@ def sign_up_by_django(request):
             elif username in users:
                 info['error'] = 'Пользователь уже существует'
             else:
-                return render(request, 'fifth_task/registration_page.html', {'message': f'Приветствуем, {username}!'})
-        else:info['form'] = form
-    else:
-        form = UserRegister()
+                info['success'] = f'Приветствуем, {username}!'
 
     info['form'] = form
     return render(request, 'fifth_task/registration_page.html', info)
@@ -48,7 +44,7 @@ def sign_up_by_html(request):
         elif username in users:
             info['error'] = 'Пользователь уже существует'
         else:
-            return render(request, 'fifth_task/registration_page.html', {'message': f'Приветствуем, {username}!'})
+            info['success'] = f'Приветствуем, {username}!'
     else:
         info['form'] = UserRegister()
 

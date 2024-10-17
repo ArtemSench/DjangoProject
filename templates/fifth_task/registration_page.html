@@ -12,6 +12,10 @@
         <button type="submit">Зарегистрироваться</button>
     </form>
 
+    {% if success %}
+        <p> <h2> {{ success }} </h2> </p>
+    {% endif %}
+
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
