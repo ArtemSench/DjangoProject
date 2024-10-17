@@ -19,14 +19,15 @@ from django.urls import path
 
 
 from task2.views import *
-from task3.views import *
+#from task3.views import *
+from task4.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main),
     path('func/', func_template),
     path('class/', class_template.as_view()),
-    path('platform/', platform, name='home'),
-    path('platform/games/', games_view),
-    path('platform/cart/', cart),
+    path('platform/', platform, name='platform'),
+    path('platform/games/', games_view, name='games'),
+    path('platform/cart/', cart_view, name='cart'),
 ]
